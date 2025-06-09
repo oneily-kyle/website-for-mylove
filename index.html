@@ -219,10 +219,7 @@ nav {
   <section id="hero" class="hero">
     <div class="hero-box">
     <h1 data-aos="fade-down">A Collection of Our Relationship</h1>
-    <p>This website is where I'll be adding pictures, letters, and any moments we share together</p>
-    <p>I'm still working on it and thinking of what else to add  hehe</p>
-    <p>This website will be available din anytime</p>
-    <p>So you can check on it anytime you want and watch as it progresses</p>
+     <p id="relationshipCounter" style="font-size: 1.5rem; color: #d63384;"></p>
     </div>
     <audio id="bg-music" controls loop style="display: none;">
       <source src="music/your-music.mp3" type="audio/mp3">
@@ -280,7 +277,23 @@ nav {
     }, 15000);
   }
 
-  setInterval(createPetal, 300);
+  setInterval(createPetal, 420);
+</script>
+<script>
+  // Set the date you first met
+  const startDate = new Date("2024-12-25");  // Replace with your first date (YYYY-MM-DD format)
+
+  function updateCounter() {
+    const today = new Date();
+    const timeDiff = today - startDate; // Difference in milliseconds
+    const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24)); // Convert to days
+
+    // Display the counter
+    document.getElementById("relationshipCounter").textContent = `We've been together for ${dayDiff} days! 💕`;
+  }
+
+  // Update counter when the page loads
+  window.onload = updateCounter;
 </script>
 
 </body>
