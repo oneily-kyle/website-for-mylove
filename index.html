@@ -46,16 +46,22 @@
       border-radius: 10px;
       cursor: pointer;
     }
-    nav {
-      position: fixed;
-      width: 100%;
-      background-color: rgba(255, 240, 245, 0.9);
-      padding: 1rem;
-      text-align: center;
-      z-index: 1000;
-      border-radius: 15px; /* Rounded navbar */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 240, 245, 0.95);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+  max-width: 90%;
+}
+
     nav a {
       margin: 0 15px;
       text-decoration: none;
