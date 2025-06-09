@@ -59,7 +59,7 @@ nav {
   justify-content: center;
   gap: 20px;
   z-index: 1000;
-  max-width: 90%;
+  max-width: 75%;
 }
 
     nav a {
@@ -115,6 +115,47 @@ nav {
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
+.gallery {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.gallery h2 {
+  margin-bottom: 30px;
+  color: #b03060;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 10px;
+  scrollbar-width: none;
+  align-items: center; /* Vertically center images */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.carousel img {
+  scroll-snap-align: center;
+  flex: 0 0 auto; /* prevent shrinking/stretching */
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+}
     .letter {
       max-width: 600px;
       background: url('images/cream-paper.png') repeat;
@@ -164,9 +205,11 @@ nav {
     <p>Here are some of our favorite moments together:</p>
     <p>I'm planning to make it a slide horizontally, still working on it...</p>
     <!-- Replace with your photos -->
+  <div class="carousel">
     <img src="images/photo1.jpg" alt="Memory 1">
     <img src="images/photo2.jpg" alt="Memory 2">
     <img src="images/photo3.jpg" alt="Memory 3">
+  </div>
   </section>
 
   <section id="letter" class="letter" data-aos="fade-right">
