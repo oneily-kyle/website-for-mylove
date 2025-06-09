@@ -221,10 +221,10 @@ nav {
     <h1 data-aos="fade-down">A Collection of Our Relationship</h1>
      <p id="relationshipCounter" style="font-size: 1.5rem; color: #d63384;"></p>
     </div>
-    <audio id="bg-music" controls loop style="display: none;">
-      <source src="music/your-music.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
+<audio id="bg-music" loop>
+  <source src="music/your-music.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
   </section>
 
   <section id="gallery" class="gallery" data-aos="fade-up">
@@ -263,6 +263,19 @@ nav {
       }, 1000);
     }
   </script>
+  <script>
+  function startExperience() {
+    const audio = document.getElementById('bg-music');
+    document.getElementById('intro').style.opacity = '0';
+
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      audio.play().catch((e) => {
+        console.log("Autoplay prevented:", e);
+      });
+    }, 1000);
+  }
+</script>
 <script>
   function createPetal() {
     const petal = document.createElement("div");
