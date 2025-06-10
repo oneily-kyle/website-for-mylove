@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For MyLove</title>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
   <style>
     html {
       scroll-behavior: smooth;
@@ -115,6 +114,7 @@ nav {
   align-items: center;
   position: relative;
 }
+
 .bear-peek {
   position: absolute;
   font-size: 3rem;
@@ -166,23 +166,6 @@ nav {
   padding: 80px 20px;
   text-align: center;
 }
-    .gallery-box {
-       background-color: #ffd4d4;
-      background-image: url('images/cream-paer.png');
-      background-repeat: repeat;
-      background-blend-mode: multiply;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 700px;
-      height: 400px; /* 🔹 THIS is where you set the height of the box */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
 
 .gallery h2 {
   margin-bottom: 30px;
@@ -293,22 +276,16 @@ nav {
   </section>
 
   <section id="gallery" class="gallery" data-aos="fade-up">
-    <div class="gallery-box">
     <h2>Our Memories</h2>
     <p>Here are some of our favorite moments together:</p>
-    <div class="carousel">
-      <a href="images/photo1.jpg" data-lightbox="gallery">
-        <img src="images/photo1.jpg" alt="Memory 1">
-      </a>
-      <a href="images/photo2.jpg" data-lightbox="gallery">
-        <img src="images/photo2.jpg" alt="Memory 2">
-      </a>
-      <a href="images/photo3.jpg" data-lightbox="gallery">
-        <img src="images/photo3.jpg" alt="Memory 3">
-      </a>
-    </div>
-      </div>
+    <!-- Replace with your photos -->
+  <div class="carousel">
+    <img src="images/photo1.jpg" alt="Memory 1">
+    <img src="images/photo2.jpg" alt="Memory 2">
+    <img src="images/photo3.jpg" alt="Memory 3">
+  </div>
   </section>
+
   <section id="letter" class="letter" data-aos="fade-right">
     <h2>My Letters to You</h2>
     <p>And this is where all the letters I made for you will be stored<p>
@@ -412,7 +389,6 @@ nav {
   // Update counter when the page loads
   window.onload = updateCounter;
 </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
 
 </body>
 </html>
