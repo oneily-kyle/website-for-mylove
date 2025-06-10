@@ -17,7 +17,31 @@
       background-attachment: fixed; /* Creates a smooth scrolling effect */
       color: #3e3e3e;
       height: 100%;
+  }
+.corner-bear {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 80px;
+  height: auto;
 }
+
+.left-bear {
+  left: 0;
+}
+
+.right-bear {
+  right: 0;
+  transform: scaleX(-1); /* Mirror the bear to face inward */
+}
+
+.corner-bear img {
+  width: 100%;
+  height: auto;
+  pointer-events: none; /* So it doesn't block clicks */
+}
+
+
     .intro {
       position: fixed;
       top: 0;
@@ -203,6 +227,13 @@ nav {
   </style>
 </head>
 <body>
+  <div class="corner-bear left-bear">
+  <img src="images/bear1.png" alt="Cute Bear Left">
+</div>
+<div class="corner-bear right-bear">
+  <img src="images/bear2.png" alt="Cute Bear Right">
+</div>
+
   <div class="intro" id="intro">
     <h1>Hiii My Loveey!🌹</h1>
     <p>This is something special I made just for you</p>
