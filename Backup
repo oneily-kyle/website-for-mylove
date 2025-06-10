@@ -262,11 +262,11 @@ nav {
     <div class="hero-box">
       <div class="bear-peek bear-top-left">🐻</div>
       <div class="bear-peek bear-top-right">🧸</div>
-    <h1 data-aos="fade-down">A Collection of Our Relationship</h1>
-    <p data-aos="fade-up">This is a collection of our relationship, from the day we met to all the memories we've made together.</p>
-    <p data-aos="fade-up">I hope you enjoy this little journey through our love story.</p>
-    <p data-aos="fade-up">And I hope you know how much you mean to me.</p>
-    <p data-aos="fade-up">I'll add more things if i get any ideas hehe</p>
+    <h1>A Collection of Our Relationship</h1>
+    <p>From the day we met to all the memories we've made together.</p>
+    <p>I hope you enjoy this little journey through our love story.</p>
+    <p>And I hope you know how much you mean to me.</p>
+    <p>I'll add more things if i get any ideas hehe</p>
      <p id="relationshipCounter" style="font-size: 1.5rem; color: #d63384;"></p>
 <audio id="bg-music" loop>
   <source src="music/your-music.mp3" type="audio/mp3">
@@ -278,7 +278,6 @@ nav {
   <section id="gallery" class="gallery" data-aos="fade-up">
     <h2>Our Memories</h2>
     <p>Here are some of our favorite moments together:</p>
-    <p>I'm planning to make it a slide horizontally, still working on it...</p>
     <!-- Replace with your photos -->
   <div class="carousel">
     <img src="images/photo1.jpg" alt="Memory 1">
