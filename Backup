@@ -112,6 +112,48 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.bear-peek {
+  position: absolute;
+  font-size: 3rem;
+  z-index: 5;
+  animation: bearPeek 4s ease-in-out infinite;
+}
+
+.bear-top-left {
+  top: -25px;
+  left: -25px;
+  transform: rotate(-15deg);
+}
+
+.bear-top-right {
+  top: -25px;
+  right: -25px;
+  transform: rotate(15deg);
+}
+
+@keyframes bearPeek {
+  0%, 100% {
+    transform: translateY(0px) rotate(-15deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-10deg);
+  }
+}
+
+.bear-top-right {
+  animation-name: bearPeekRight;
+}
+
+@keyframes bearPeekRight {
+  0%, 100% {
+    transform: translateY(0px) rotate(15deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(10deg);
+  }
 }
     .gallery img {
       width: 100%;
@@ -218,12 +260,19 @@ nav {
 
   <section id="hero" class="hero">
     <div class="hero-box">
+      <div class="bear-peek bear-top-left">🐻</div>
+      <div class="bear-peek bear-top-right">🧸</div>
     <h1 data-aos="fade-down">A Collection of Our Relationship</h1>
+    <p data-aos="fade-up">This is a collection of our relationship, from the day we met to all the memories we've made together.</p>
+    <p data-aos="fade-up">I hope you enjoy this little journey through our love story.</p>
+    <p data-aos="fade-up">And I hope you know how much you mean to me.</p>
+    <p data-aos="fade-up">I'll add more things if i get any ideas hehe</p>
      <p id="relationshipCounter" style="font-size: 1.5rem; color: #d63384;"></p>
 <audio id="bg-music" loop>
   <source src="music/your-music.mp3" type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
+    </div>
   </section>
 
   <section id="gallery" class="gallery" data-aos="fade-up">
@@ -267,6 +316,9 @@ nav {
   }
 </script>
 <script>
+  let petalInterval = null;
+  let isHeroVisible = false;
+
   function createPetal() {
     const petal = document.createElement("div");
     petal.classList.add("petal");
@@ -280,7 +332,47 @@ nav {
     }, 15000);
   }
 
-  setInterval(createPetal, 420);
+  function startPetals() {
+    if (!petalInterval && isHeroVisible) {
+      petalInterval = setInterval(createPetal, 420);
+    }
+  }
+
+  function stopPetals() {
+    if (petalInterval) {
+      clearInterval(petalInterval);
+      petalInterval = null;
+    }
+  }
+
+  // Create intersection observer to watch the hero section
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.target.id === 'hero') {
+        isHeroVisible = entry.isIntersecting;
+        if (isHeroVisible) {
+          startPetals();
+        } else {
+          stopPetals();
+        }
+      }
+    });
+  }, {
+    threshold: 0.3 // Trigger when 30% of hero section is visible
+  });
+
+  // Start observing the hero section after the intro is done
+  function startObservingHero() {
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+      heroObserver.observe(heroSection);
+    }
+  }
+
+  // Start observing after intro completes
+  window.addEventListener('load', () => {
+    setTimeout(startObservingHero, 2000); // Delay to allow intro to finish
+  });
 </script>
 <script>
   // Set the date you first met
