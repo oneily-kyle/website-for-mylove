@@ -1,0 +1,8 @@
+@media (max-width: 600px) {
+  section {
+    padding: 80px 12px;
+  }
+  .carousel {
+    justify-content: center;
+  }
+}
