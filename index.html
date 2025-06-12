@@ -67,25 +67,20 @@
       color: #d63384;
       font-weight: bold;
     }
-    section {
-      padding: 100px 20px;
-      min-height: 100vh;
-      width: 90%;
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffd4d4;
-      background-image: url('images/cream-paper.png');
-      background-repeat: repeat;
-      background-blend-mode: multiply;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      backdrop-filter: blur(10px);
-    }
+section {
+  padding: 60px 20px;
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #ffd4d4;
+  background-image: url('images/cream-paper.png');
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
     .hero {
       color: white;
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
@@ -319,11 +314,7 @@
   <section id="gallery" class="gallery" data-aos="fade-up">
     <h2>Our Memories</h2>
     <p>Here are some of our favorite moments together:</p>
-    <div class="carousel">
-      <img src="images/photo1.jpg" alt="Memory 1">
-      <img src="images/photo2.jpg" alt="Memory 2">
-      <img src="images/photo3.jpg" alt="Memory 3">
-    </div>
+    <div class="carousel" id="carousel"></div>
   </section>
   <section id="letter" class="letter" data-aos="fade-right">
     <h2>My Letters to You</h2>
@@ -408,52 +399,77 @@ function updateCounter() {
 }
 window.onload = updateCounter;
 </script>
-<script>
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const galleryImages = Array.from(document.querySelectorAll('.carousel img'));
-const leftArrow = document.querySelector('.lightbox-arrow.left');
-const rightArrow = document.querySelector('.lightbox-arrow.right');
-let currentIndex = 0;
-function openLightbox(index) {
-  currentIndex = index;
-  lightboxImg.src = galleryImages[currentIndex].src;
-  lightbox.classList.add('show');
-}
-function closeLightbox() {
-  lightbox.classList.remove('show');
-  lightboxImg.src = '';
-}
-function showNext() {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentIndex].src;
-}
-function showPrev() {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  lightboxImg.src = galleryImages[currentIndex].src;
-}
-galleryImages.forEach((img, index) => {
-  img.addEventListener('click', () => openLightbox(index));
-});
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox || e.target === lightboxImg) {
-    closeLightbox();
+  <script>
+  const imageCount = 106; // Replace with the actual number of images
+  const imagePaths = Array.from({ length: imageCount }, (_, i) => `gallery/image_${i + 1}.jpg`);
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
-});
-leftArrow.addEventListener('click', (e) => {
-  e.stopPropagation();
-  showPrev();
-});
-rightArrow.addEventListener('click', (e) => {
-  e.stopPropagation();
-  showNext();
-});
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('show')) return;
-  if (e.key === 'ArrowRight') showNext();
-  if (e.key === 'ArrowLeft') showPrev();
-  if (e.key === 'Escape') closeLightbox();
-});
-</script>
+
+  const carousel = document.getElementById('carousel');
+  const shuffledImages = shuffle([...imagePaths]);
+  shuffledImages.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Memory ${index + 1}`;
+    img.addEventListener('click', () => openLightbox(index));
+    carousel.appendChild(img);
+  });
+
+  let currentIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const leftArrow = document.querySelector('.lightbox-arrow.left');
+  const rightArrow = document.querySelector('.lightbox-arrow.right');
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = shuffledImages[currentIndex];
+    lightbox.classList.add('show');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('show');
+    lightboxImg.src = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % shuffledImages.length;
+    lightboxImg.src = shuffledImages[currentIndex];
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + shuffledImages.length) % shuffledImages.length;
+    lightboxImg.src = shuffledImages[currentIndex];
+  }
+
+  leftArrow.addEventListener('click', e => {
+    e.stopPropagation();
+    showPrev();
+  });
+
+  rightArrow.addEventListener('click', e => {
+    e.stopPropagation();
+    showNext();
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox || e.target === lightboxImg) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('show')) return;
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'Escape') closeLightbox();
+  });
+  </script>
 </body>
 </html>
